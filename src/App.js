@@ -30,11 +30,8 @@ class App extends Component {
 
   userSubmitHandler = (event) => {
     event.preventDefault();
-    let currentTodos = this.state.todos;
-    let newTodos = currentTodos.push({ key: Math.floor(Math.random() * 10), todos: this.state.userInput, completed:false });
-    console.log(currentTodos, newTodos);
+    let newTodos = [...this.state.todos, { key: Math.random() * 10, note: this.state.userInput, completed:false }];
     this.setState({ todos: newTodos, userInput: '' })
-    console.log(this.state);
   }
 
   render() {
