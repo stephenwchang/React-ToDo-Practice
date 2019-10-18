@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import TodoItem from './components/TodoItem';
 import UserInput from './components/UserInput';
+import Todos from './components/Todos';
 
 class App extends Component {
 
@@ -31,15 +31,16 @@ class App extends Component {
   userSubmitHandler = (event) => {
     event.preventDefault();
     let currentTodos = this.state.todos;
-    let newTodos = currentTodos.push({ key: Math.random() * 10, todos: this.state.userInput, completed:false });
+    let newTodos = currentTodos.push({ key: Math.floor(Math.random() * 10), todos: this.state.userInput, completed:false });
     console.log(currentTodos, newTodos);
-    this.setState({ todos: newTodos })
+    this.setState({ todos: newTodos, userInput: '' })
+    console.log(this.state);
   }
 
   render() {
     return (
       <div>
-        {this.state.todos.map((todo) => { return <TodoItem key={todo.key} note={todo.note} completed={todo.completed}/> })}
+        <Todos todos={this.state.todos}/>
         <UserInput input={this.state.userInput} userChangeHandler={this.userChangeHandler} userSubmitHandler={this.userSubmitHandler}/>
       </div>
       
