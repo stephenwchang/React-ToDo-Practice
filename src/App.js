@@ -34,10 +34,16 @@ class App extends Component {
     this.setState({ todos: newTodos, userInput: '' })
   }
 
+  userDeleteHandler = (event) => {
+    let id = parseInt(event.target.id);
+    let newTodos = this.state.todos.filter((todo) => { return todo.key !== id; }); 
+    this.setState({ todos: newTodos });
+  }
+
   render() {
     return (
       <div>
-        <Todos todos={this.state.todos}/>
+        <Todos todos={this.state.todos} userDeleteHandler={this.userDeleteHandler}/>
         <UserInput input={this.state.userInput} userChangeHandler={this.userChangeHandler} userSubmitHandler={this.userSubmitHandler}/>
       </div>
       
