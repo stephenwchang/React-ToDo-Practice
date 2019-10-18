@@ -5,7 +5,7 @@ class TodoItem extends Component {
     return (
       <div>
         {this.props.note}
-        <button onClick={this.props.userDeleteHandler} id={this.props.id}>Delete</button>
+        <button style={{ margin: "2px 2px" }} onClick={this.props.userDeleteHandler} id={this.props.id}>Delete</button>
       </div>
     );
   }
